@@ -1,0 +1,12 @@
+module docker-socket 1.0;
+
+require {
+	class sock_file read;
+	class unix_stream_socket connectto;
+	type docker_var_run_t;
+	type docker_t;
+	type svirt_lxc_net_t;
+}
+
+allow svirt_lxc_net_t docker_t:unix_stream_socket connectto;
+allow svirt_lxc_net_t docker_var_run_t:sock_file read;
